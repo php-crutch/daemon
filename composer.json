@@ -1,0 +1,16 @@
+{
+  "name": "crutch/daemon",
+  "type": "library",
+  "description": "daemon helper",
+  "license": ["MIT"],
+  "require": {
+    "php": "^7.4 || ^8.0",
+    "ext-pcntl": "*",
+    "ext-posix": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Crutch\\Daemon\\": "src/"
+    }
+  }
+}
