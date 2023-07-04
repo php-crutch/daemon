@@ -33,6 +33,9 @@ final class Daemon
      * @param callable(): void $worker
      * @param int $quantity
      * @return int
+     * @throws CouldNotForkProcess
+     * @throws CouldNotSetSid
+     * @throws CouldNotWritePid
      * @throws DaemonAlreadyStarted
      */
     public function start(callable $worker, int $quantity): int
@@ -45,6 +48,11 @@ final class Daemon
         $this->finalize();
 
         return 0;
+    }
+
+    public function listen(callable $worker): void
+    {
+        $worker();
     }
 
     /**
@@ -98,6 +106,9 @@ final class Daemon
 
     /**
      * @return void
+     * @throws CouldNotForkProcess
+     * @throws CouldNotSetSid
+     * @throws CouldNotWritePid
      */
     private function detachMainProcess(): void
     {

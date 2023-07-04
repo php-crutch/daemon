@@ -44,6 +44,9 @@ switch ($action) {
             exit($exception->getCode());
         }
         break;
+    case 'listen':
+        $daemon->listen($worker);
+        break;
     case 'stop':
         try {
             $daemon->stop();
